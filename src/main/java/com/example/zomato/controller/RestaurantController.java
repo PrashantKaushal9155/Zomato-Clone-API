@@ -6,6 +6,7 @@ import com.example.zomato.service.RestaurantService;
 import com.example.zomato.util.AppResponseBuilder;
 import com.example.zomato.util.ResponseStructure;
 import jakarta.validation.Valid;
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,14 +16,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("${zomato.base_url}")
+@AllArgsConstructor
 public class RestaurantController {
     private final RestaurantService restaurantService;
     private final AppResponseBuilder responseBuilder;
 
-    public RestaurantController(AppResponseBuilder responseBuilder, RestaurantService restaurantService) {
-        this.responseBuilder = responseBuilder;
-        this.restaurantService = restaurantService;
-    }
 
     @PostMapping("/restaurants")
     public ResponseEntity<ResponseStructure<RestaurantResponse>> addRestaurant(@RequestBody @Valid RestaurantRequest restaurantRequest) {
