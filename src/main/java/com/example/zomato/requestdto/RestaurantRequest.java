@@ -13,7 +13,6 @@ import java.util.List;
 public class RestaurantRequest {
 
     @NotNull(message = "Name can't be null")
-    @Pattern(regexp = "^[A-Z][a-z0-9_]{2,39}$", message = "UserName starts with uppercase and length must be 3-40 characters long")
     private String name;
     @Pattern(regexp = "^[a-zA-Z0-9\\s,.-]{10,200}$")
     private String description;
