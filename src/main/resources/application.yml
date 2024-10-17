@@ -15,4 +15,8 @@ spring:
     properties:
       hibernate:
         format_sql: true
+#URL PATTERNS
+zomato:
+  base_url: api/v1
+
 
