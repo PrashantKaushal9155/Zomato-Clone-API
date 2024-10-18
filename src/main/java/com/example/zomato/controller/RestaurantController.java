@@ -9,10 +9,7 @@ import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("${zomato.base_url}")
@@ -22,9 +19,14 @@ public class RestaurantController {
     private final AppResponseBuilder responseBuilder;
 
 
-    @PostMapping("/restaurants")
+    @PostMapping("/restaurants/save")
     public ResponseEntity<ResponseStructure<RestaurantResponse>> addRestaurant(@RequestBody @Valid RestaurantRequest restaurantRequest) {
         RestaurantResponse restaurantResponse = restaurantService.saveRestaurant(restaurantRequest);
-        return responseBuilder.success(HttpStatus.CREATED, "User Created", restaurantResponse);
+        return responseBuilder.success(HttpStatus.CREATED, "Restaurant Created", restaurantResponse);
+    }
+    @PutMapping("/restaurants/update/{restaurant_id}")
+    public ResponseEntity<ResponseStructure<RestaurantResponse>> updateRestaurant(@RequestBody RestaurantRequest restaurantRequest, @PathVariable("restaurant_id") String restaurantId){
+        RestaurantResponse response = restaurantService.updateRestaurant(restaurantRequest, restaurantId);
+        return responseBuilder.success(HttpStatus.OK,"Restaurant Updated", response);
     }
 }
