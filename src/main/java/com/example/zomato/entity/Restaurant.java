@@ -28,4 +28,8 @@ public class Restaurant {
     @Column(name = "diet_types")
     @ElementCollection
     private List<DietType> dietTypes;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "address_id")
+    private Address address;
 }
