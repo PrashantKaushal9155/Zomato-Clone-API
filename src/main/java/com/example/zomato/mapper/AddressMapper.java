@@ -7,8 +7,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class AddressMapper {
-    public Address mapToAddress(AddressRequest addressRequest) {
-        Address address = new Address();
+    public Address mapToAddress(AddressRequest addressRequest, Address address) {
         address.setAddressLine1(addressRequest.getAddressLine1());
         address.setAddressLine2(addressRequest.getAddressLine2());
         address.setLandmark(addressRequest.getLandmark());

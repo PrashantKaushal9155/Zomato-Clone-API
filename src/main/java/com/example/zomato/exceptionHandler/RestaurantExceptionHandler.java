@@ -16,6 +16,6 @@ public class RestaurantExceptionHandler {
 
     @ExceptionHandler(FindRestaurantByIdException.class)
     public ResponseEntity<ErrorStructure> handleRestaurantNotFoundById(FindRestaurantByIdException ex){
-        return responseBuilder.error(HttpStatus.NOT_FOUND, ex.getMessage(),"User not found by Id");
+        return responseBuilder.error(HttpStatus.NOT_FOUND, ex.getMessage(),"Restaurant not found by Id");
     }
 }
